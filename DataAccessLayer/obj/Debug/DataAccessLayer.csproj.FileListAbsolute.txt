@@ -1,0 +1,5 @@
+C:\Users\Khalil Gulraiz\source\repos\Food-buy-back-end\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Khalil Gulraiz\source\repos\Food-buy-back-end\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Khalil Gulraiz\source\repos\Food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Khalil Gulraiz\source\repos\Food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Khalil Gulraiz\source\repos\Food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

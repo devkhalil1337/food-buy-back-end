@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.2017
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food-buy-back-end", "Food-buy-back-end\Food-buy-back-end.csproj", "{637A0987-DE8D-48D9-B21F-B4BC863CF966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{592B6BD1-6BF6-4611-854E-F86EA70D2CC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{637A0987-DE8D-48D9-B21F-B4BC863CF966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637A0987-DE8D-48D9-B21F-B4BC863CF966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637A0987-DE8D-48D9-B21F-B4BC863CF966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637A0987-DE8D-48D9-B21F-B4BC863CF966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592B6BD1-6BF6-4611-854E-F86EA70D2CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592B6BD1-6BF6-4611-854E-F86EA70D2CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592B6BD1-6BF6-4611-854E-F86EA70D2CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592B6BD1-6BF6-4611-854E-F86EA70D2CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF13662B-F778-4C3F-844C-FA6E9A0D75BC}
+	EndGlobalSection
+EndGlobal
