@@ -25,7 +25,7 @@ namespace Food_buy_back_end.Providers
 
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
             var storedProcedureName = "SP_GetAllBusinesUnits";
-            Dictionary<string, object> parameters = new Dictionary<string, object> {};
+            Dictionary<string, object> parameters = new Dictionary<string, object> { };
 
             try
             {
@@ -44,97 +44,28 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-               /* LogEntry logEntry = new LogEntry()
-                {
-                    Severity = System.Diagnostics.TraceEventType.Error,
-                    Message = ex.Message + Environment.NewLine + ex.StackTrace
-                };
-                Logger.Write(logEntry);*/
+                /* LogEntry logEntry = new LogEntry()
+                 {
+                     Severity = System.Diagnostics.TraceEventType.Error,
+                     Message = ex.Message + Environment.NewLine + ex.StackTrace
+                 };
+                 Logger.Write(logEntry);*/
             }
 
             return businessUnits;
         }
 
-       /* public bool UpdateBooking(BusinessInfo bsinessInfo)
-        {
-            IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "sp_UpdateBooking";
 
-            var statusChangedDateTime = DateTime.UtcNow;
-
-            Dictionary<string, object> parameters = new Dictionary<string, object> {
-                { "bookingId", booking.Id},
-                { "agencyId", booking.AgencyId },
-                { "driverCode", booking.DriverCode },
-                { "startDateTime", booking.StartDateTime },
-                { "endDateTime", booking.EndDateTime },
-                { "actualStartDateTime", booking.ActualStartDateTime },
-                { "actualEndDateTime", booking.ActualEndDateTime },
-                { "fromLatitude", booking.FromLatitude },
-                { "fromLongitude", booking.FromLongitude },
-                { "toLatitude", booking.ToLatitude },
-                { "toLongitude", booking.ToLongitude },
-                { "fromAddressId", booking.FromAddressId },
-                { "toAddressId", booking.ToAddressId },
-                { "customerId", booking.CustomerId },
-                { "customerName", booking.CustomerName },
-                { "statusId", booking.StatusId },
-                { "statusChangedDateTime", statusChangedDateTime },
-                { "statusComments", booking.StatusComments },
-                { "syncStatus", booking.SyncStatus },
-                { "deleteRow", booking.DeleteRow },
-                {"IsActive",booking.isActive}
-            };
-
-            try
-            {
-                var result = dataAccessProvider.ExecuteNonQueryStoredProcedure(storedProcedureName, parameters);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                LogEntry logEntry = new LogEntry()
-                {
-                    Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Updating Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
-                    Message = ex.Message + Environment.NewLine + ex.StackTrace
-                };
-                Logger.Write(logEntry);
-            }
-
-
-            return false;
-        }
-
-        public long CreateBooking(Booking booking)
+        public long CreateBusinessUnit(BusinessInfo businessInfo)
         {
             //GetBookings(10);
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "sp_AddNewBooking";
+            var storedProcedureName = "SP_AddNewBusinessUnit";
 
             var statusChangedDateTime = DateTime.UtcNow;
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
-                { "bookingId", booking.Id},
-                { "agencyId", booking.AgencyId },
-                { "driverCode", booking.DriverCode },
-                { "startDateTime", booking.StartDateTime },
-                { "endDateTime", booking.EndDateTime },
-                { "actualStartDateTime", booking.ActualStartDateTime },
-                { "actualEndDateTime", booking.ActualEndDateTime },
-                { "fromLatitude", booking.FromLatitude },
-                { "fromLongitude", booking.FromLongitude },
-                { "toLatitude", booking.ToLatitude },
-                { "toLongitude", booking.ToLongitude },
-                { "fromAddressId", booking.FromAddressId },
-                { "toAddressId", booking.ToAddressId },
-                { "customerId", booking.CustomerId },
-                { "customerName", booking.CustomerName },
-                { "statusId", booking.StatusId },
-                { "statusChangedDateTime", statusChangedDateTime },
-                { "statusComments", booking.StatusComments },
-                { "syncStatus", booking.SyncStatus },
-                {"IsActive",booking.isActive }
+                { "BusinessName", businessInfo.BusinessName},
             };
 
             try
@@ -144,62 +75,63 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-                LogEntry logEntry = new LogEntry()
-                {
-                    Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Creating New Booking for DriverCode: {0} with Agency Id: {1}", booking.DriverCode, booking.AgencyId),
-                    Message = ex.Message + Environment.NewLine + ex.StackTrace
-                };
-                Logger.Write(logEntry);
+                /*                LogEntry logEntry = new LogEntry()
+                                {
+                                    Severity = System.Diagnostics.TraceEventType.Error,
+                                    Title = string.Format("Creating New Booking for DriverCode: {0} with Agency Id: {1}", booking.DriverCode, booking.AgencyId),
+                                    Message = ex.Message + Environment.NewLine + ex.StackTrace
+                                };
+                                Logger.Write(logEntry);*/
             }
 
 
             return -1;
         }
 
-        public Booking GetBookingDetails(long bookingId)
+        public bool UpdateBusinessUnit(BusinessInfo businessInfo)
         {
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "sp_GetBookingDetails";
+            var storedProcedureName = "SP_UpdateBusinesUnits";
+
+            var statusChangedDateTime = DateTime.UtcNow;
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
-                { "bookingId", bookingId }
-            };
+                 { "BusinessId", businessInfo.BusinessId},
+                 { "BusinessName", businessInfo.BusinessName },
+             };
 
             try
             {
-                var dataSet = dataAccessProvider.ExecuteStoredProcedure(storedProcedureName, parameters);
-
-                if (dataSet.Tables.Count < 1 || dataSet.Tables[0].Rows.Count < 1 || dataSet.Tables[0].Rows.Count < 1)
-                    return null;
-
-                var booking = Booking.ExtractObject(dataSet.Tables[0].Rows[0]);
-                return booking;
+                var result = dataAccessProvider.ExecuteNonQueryStoredProcedure(storedProcedureName, parameters);
+                return result;
             }
             catch (Exception ex)
             {
-                LogEntry logEntry = new LogEntry()
+                /*LogEntry logEntry = new LogEntry()
                 {
                     Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Getting Booking details for Id : {0}", bookingId),
+                    Title = string.Format("Updating Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
                     Message = ex.Message + Environment.NewLine + ex.StackTrace
                 };
-                Logger.Write(logEntry);
+                Logger.Write(logEntry);*/
             }
 
-            return null;
+
+            return false;
         }
 
-        public IList<Booking> GetBookings(long AgencyId)
+
+
+        public IList<BusinessInfo> GetBusinessUnitById(long BusinessId)
         {
-            List<Booking> GetBookings = new List<Booking>();
+            List<BusinessInfo> GetBusinessUnits = new List<BusinessInfo>();
 
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "sp_GetAgencyBooking";
+            var storedProcedureName = "SP_GetBusinessUnitById";
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
-                { "AgencyId", AgencyId }
-            };
+                   { "BusinessId", BusinessId }
+               };
 
             try
             {
@@ -209,13 +141,13 @@ namespace Food_buy_back_end.Providers
                     return null;
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows)
                 {
-                    var booking = Booking.ExtractObject(dataRow);
-                    GetBookings.Add(booking);
+                    var busessInfo = BusinessInfo.ExtractObject(dataRow);
+                    GetBusinessUnits.Add(busessInfo);
                 }
             }
             catch (Exception ex)
             {
-                LogEntry logEntry = new LogEntry()
+                /*LogEntry logEntry = new LogEntry()
                 {
                     Severity = System.Diagnostics.TraceEventType.Error,
                     Title = string.Format("Getting Booking details for Id : {0}", AgencyId),
@@ -223,36 +155,38 @@ namespace Food_buy_back_end.Providers
                 };
                 Logger.Write(logEntry);
             }
+            */
+            }
+            return GetBusinessUnits;
 
-            return GetBookings;
         }
+        
+           public bool DeleteBusinessUnit(long BusinessId)
+           {
+               IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
+               var storedProcedureName = "SP_DeleteBusinesUnits";
 
-        public bool DeleteBooking(Booking booking)
-        {
-            IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "sp_DeleteBooking";
+               Dictionary<string, object> parameters = new Dictionary<string, object> {
+                   { "BusinessId", BusinessId}
+               };
 
-            Dictionary<string, object> parameters = new Dictionary<string, object> {
-                { "bookingId", booking.Id}
-            };
+               try
+               {
+                   var result = dataAccessProvider.ExecuteNonQueryStoredProcedure(storedProcedureName, parameters);
+                   return result;
+               }
+               catch (Exception ex)
+               {
+                   /*LogEntry logEntry = new LogEntry()
+                   {
+                       Severity = System.Diagnostics.TraceEventType.Error,
+                       Title = string.Format("Deleting Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
+                       Message = ex.Message + Environment.NewLine + ex.StackTrace
+                   };
+                   Logger.Write(logEntry);*/
+               }
 
-            try
-            {
-                var result = dataAccessProvider.ExecuteNonQueryStoredProcedure(storedProcedureName, parameters);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                LogEntry logEntry = new LogEntry()
-                {
-                    Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Deleting Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
-                    Message = ex.Message + Environment.NewLine + ex.StackTrace
-                };
-                Logger.Write(logEntry);
-            }
-
-            return false;
-        }*/
+               return false;
+           }
     }
 }

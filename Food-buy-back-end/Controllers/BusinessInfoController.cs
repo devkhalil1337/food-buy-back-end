@@ -1,4 +1,5 @@
-﻿using Food_buy_back_end.Providers;
+﻿using Food_buy_back_end.Models;
+using Food_buy_back_end.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,34 @@ namespace Food_buy_back_end.Controllers
         {
             BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
             var result = businessInfoProvider.GetAllBusinesUnits();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddNewBusinessUnit(BusinessInfo businessInfo)
+        {
+            BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
+            var result = businessInfoProvider.CreateBusinessUnit(businessInfo);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UpdateBusinessUnit(BusinessInfo businessInfo)
+        {
+            BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
+            var result = businessInfoProvider.UpdateBusinessUnit(businessInfo);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetBusinessUnitById(long BusinessId)
+        {
+            BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
+            var result = businessInfoProvider.GetBusinessUnitById(BusinessId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteBusinessUnitById(long BusinessId)
+        {
+            BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
+            var result = businessInfoProvider.DeleteBusinessUnit(BusinessId);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
