@@ -1,0 +1,18 @@
+USE [Food-buy]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SP_GetAllBusinesUnits]    Script Date: 6/26/2022 1:29:23 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_GetAllBusinesUnits]
+AS  
+BEGIN  
+   SELECT * from tbl_businessInfo
+END  
+GO
+
+

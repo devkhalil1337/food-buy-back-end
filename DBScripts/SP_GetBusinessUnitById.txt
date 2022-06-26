@@ -1,0 +1,21 @@
+USE [Food-buy]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SP_GetBusinessUnitById]    Script Date: 6/26/2022 1:29:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_GetBusinessUnitById]
+(
+	@BusinessId int 
+)
+AS  
+BEGIN  
+   SELECT * from tbl_businessInfo where BusinessId = @BusinessId
+END  
+GO
+
+

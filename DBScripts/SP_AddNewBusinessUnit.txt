@@ -1,0 +1,21 @@
+USE [Food-buy]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SP_AddNewBusinessUnit]    Script Date: 6/26/2022 1:28:18 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_AddNewBusinessUnit]
+(
+	@BusinessName nchar(255) 
+)
+AS  
+BEGIN  
+SET NOCOUNT ON;
+   Insert tbl_businessInfo(BusinessName) Values(@BusinessName);
+   SELECT SCOPE_IDENTITY();
+END  
+GO

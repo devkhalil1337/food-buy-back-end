@@ -1,0 +1,26 @@
+USE [Food-buy]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SP_UpdateBusinesUnits]    Script Date: 6/26/2022 1:30:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[SP_UpdateBusinesUnits](
+ @BusinessId int,
+ @BusinessName nchar(255)
+)
+AS  
+BEGIN  
+Declare @status int  
+  update tbl_businessInfo SET  businessName = @BusinessName where BusinessId = @BusinessId
+  Begin
+   SET @status = 1;
+    return @status;
+ End
+END  
+GO
+
+
