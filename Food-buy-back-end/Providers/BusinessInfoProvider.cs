@@ -56,16 +56,37 @@ namespace Food_buy_back_end.Providers
         }
 
 
-        public long CreateBusinessUnit(BusinessInfo businessInfo)
+
+        public long CreateBusinessUnit (BusinessInfo businessInfo)
         {
-            //GetBookings(10);
+            
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "SP_AddNewBusinessUnit";
+            var storedProcedureName = "SP_AddNewBusiness";
 
             var statusChangedDateTime = DateTime.UtcNow;
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
+            
+
+                { "Localization", businessInfo.Localization},
                 { "BusinessName", businessInfo.BusinessName},
+                { "BusinessContact", businessInfo.BusinessContact },
+                { "BusinessEmail", businessInfo.BusinessEmail },
+                { "BusinessAddress", businessInfo.BusinessAddress },
+                { "BusinessCity", businessInfo.BusinessCity },
+                { "BusinessCountry", businessInfo.BusinessCountry },
+                { "BusinessDetails", businessInfo.BusinessDetails },
+                { "BusinessLatitude", businessInfo.BusinessLatitude },
+                { "BusinessLongitude", businessInfo.BusinessLongitude },
+                { "BusinessCurrency", businessInfo.BusinessCurrency },
+                { "BusinessWebsiteUrl", businessInfo.BusinessWebsiteUrl },
+                { "BusinessTempClose", businessInfo.BusinessTempClose },
+                { "ClosetillDate", businessInfo.ClosetillDate },
+                { "BusinessExpiryDate", businessInfo.BusinessExpiryDate },
+                { "CreationDate", businessInfo.CreationDate },
+                { "UpdateDate", statusChangedDateTime },
+                { "Deleted", businessInfo.Deleted },
+                { "Active", businessInfo.Active },
             };
 
             try
@@ -75,29 +96,46 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-                /*                LogEntry logEntry = new LogEntry()
-                                {
-                                    Severity = System.Diagnostics.TraceEventType.Error,
-                                    Title = string.Format("Creating New Booking for DriverCode: {0} with Agency Id: {1}", booking.DriverCode, booking.AgencyId),
-                                    Message = ex.Message + Environment.NewLine + ex.StackTrace
-                                };
-                                Logger.Write(logEntry);*/
+                LogEntry logEntry = new LogEntry()
+                {
+                    Severity = System.Diagnostics.TraceEventType.Error,
+                    Title = string.Format("Creating New business Info for a customer ", businessInfo.BusinessName),
+                    Message = ex.Message + Environment.NewLine + ex.StackTrace
+                };
+                Logger.Write(logEntry);
             }
 
 
             return -1;
         }
-
         public bool UpdateBusinessUnit(BusinessInfo businessInfo)
         {
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "SP_UpdateBusinesUnits";
+            var storedProcedureName = "SP_UpdateBusinesInfo";
 
             var statusChangedDateTime = DateTime.UtcNow;
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
-                 { "BusinessId", businessInfo.BusinessId},
-                 { "BusinessName", businessInfo.BusinessName },
+                { "BusinessId", businessInfo.BusinessId},
+                { "Localization", businessInfo.Localization},
+                { "BusinessName", businessInfo.BusinessName},
+                { "BusinessContact", businessInfo.BusinessContact },
+                { "BusinessEmail", businessInfo.BusinessEmail },
+                { "BusinessAddress", businessInfo.BusinessAddress },
+                { "BusinessCity", businessInfo.BusinessCity },
+                { "BusinessCountry", businessInfo.BusinessCountry },
+                { "BusinessDetails", businessInfo.BusinessDetails },
+                { "BusinessLatitude", businessInfo.BusinessLatitude },
+                { "BusinessLongitude", businessInfo.BusinessLongitude },
+                { "BusinessCurrency", businessInfo.BusinessCurrency },
+                { "BusinessWebsiteUrl", businessInfo.BusinessWebsiteUrl },
+                { "BusinessTempClose", businessInfo.BusinessTempClose },
+                { "ClosetillDate", businessInfo.ClosetillDate },
+                { "BusinessExpiryDate", businessInfo.BusinessExpiryDate },
+                { "CreationDate", businessInfo.CreationDate },
+                { "UpdateDate", statusChangedDateTime },
+                { "Deleted", businessInfo.Deleted },
+                { "Active", businessInfo.Active },
              };
 
             try
@@ -107,13 +145,13 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-                /*LogEntry logEntry = new LogEntry()
+                LogEntry logEntry = new LogEntry()
                 {
                     Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Updating Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
+                    Title = string.Format("Updating business Info with Id: {0} for Business Name: {1}", businessInfo.BusinessId, businessInfo.BusinessName),
                     Message = ex.Message + Environment.NewLine + ex.StackTrace
                 };
-                Logger.Write(logEntry);*/
+                Logger.Write(logEntry);
             }
 
 
@@ -127,7 +165,7 @@ namespace Food_buy_back_end.Providers
             List<BusinessInfo> GetBusinessUnits = new List<BusinessInfo>();
 
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-            var storedProcedureName = "SP_GetBusinessUnitById";
+            var storedProcedureName = "SP_GetBusinessInfo";
 
             Dictionary<string, object> parameters = new Dictionary<string, object> {
                    { "BusinessId", BusinessId }
@@ -147,16 +185,16 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-                /*LogEntry logEntry = new LogEntry()
+                LogEntry logEntry = new LogEntry()
                 {
                     Severity = System.Diagnostics.TraceEventType.Error,
-                    Title = string.Format("Getting Booking details for Id : {0}", AgencyId),
+                    Title = string.Format("Getting business details for Id : {0}", BusinessId),
                     Message = ex.Message + Environment.NewLine + ex.StackTrace
                 };
                 Logger.Write(logEntry);
             }
-            */
-            }
+            
+            
             return GetBusinessUnits;
 
         }
@@ -164,7 +202,7 @@ namespace Food_buy_back_end.Providers
            public bool DeleteBusinessUnit(long BusinessId)
            {
                IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
-               var storedProcedureName = "SP_DeleteBusinesUnits";
+               var storedProcedureName = "SP_DeleteBusinessInfo";
 
                Dictionary<string, object> parameters = new Dictionary<string, object> {
                    { "BusinessId", BusinessId}
@@ -177,13 +215,13 @@ namespace Food_buy_back_end.Providers
                }
                catch (Exception ex)
                {
-                   /*LogEntry logEntry = new LogEntry()
+                   LogEntry logEntry = new LogEntry()
                    {
                        Severity = System.Diagnostics.TraceEventType.Error,
-                       Title = string.Format("Deleting Booking with Id: {0} for DriverCode: {1}", booking.Id, booking.DriverCode),
+                       Title = string.Format("Deleting Business with Id: {0}", BusinessId),
                        Message = ex.Message + Environment.NewLine + ex.StackTrace
                    };
-                   Logger.Write(logEntry);*/
+                   Logger.Write(logEntry);
                }
 
                return false;
