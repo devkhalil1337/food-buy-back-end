@@ -16,17 +16,17 @@ namespace Food_buy_back_end.Controllers
             return View();
         }
 
-        public ActionResult GetAllBusinessUnits()
+        /*public ActionResult GetAllBusinessUnits()
         {
             BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
             var result = businessInfoProvider.GetAllBusinesUnits();
             return Json(result, JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
         public ActionResult AddNewBusinessUnit(BusinessInfo businessInfo)
         {
             BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
-            var result = businessInfoProvider.CreateBusinessUnit(businessInfo);
+            var result = businessInfoProvider.AddNewBusinessUnit(businessInfo);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -37,14 +37,14 @@ namespace Food_buy_back_end.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetBusinessUnitById(long BusinessId)
+        public ActionResult GetBusinessUnitById(int BusinessId)
         {
             BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
             var result = businessInfoProvider.GetBusinessUnitById(BusinessId);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteBusinessUnitById(long BusinessId)
+        public ActionResult DeleteBusinessUnit(long BusinessId)
         {
             BusinessInfoProvider businessInfoProvider = new BusinessInfoProvider();
             var result = businessInfoProvider.DeleteBusinessUnit(BusinessId);

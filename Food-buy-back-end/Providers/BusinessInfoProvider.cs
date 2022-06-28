@@ -57,7 +57,7 @@ namespace Food_buy_back_end.Providers
 
 
 
-        public long CreateBusinessUnit (BusinessInfo businessInfo)
+        public long AddNewBusinessUnit (BusinessInfo businessInfo)
         {
             
             IDatabaseAccessProvider dataAccessProvider = new SqlDataAccess(_ConnectionString);
@@ -160,7 +160,7 @@ namespace Food_buy_back_end.Providers
 
 
 
-        public IList<BusinessInfo> GetBusinessUnitById(long BusinessId)
+        public IList<BusinessInfo> GetBusinessUnitById(int BusinessId)
         {
             List<BusinessInfo> GetBusinessUnits = new List<BusinessInfo>();
 
