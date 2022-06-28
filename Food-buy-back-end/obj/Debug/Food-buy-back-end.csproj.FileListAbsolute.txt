@@ -1,0 +1,2 @@
+E:\food-buy-back-end\Food-buy-back-end\obj\Debug\Food-buy-back-end.csprojAssemblyReference.cache
+E:\food-buy-back-end\Food-buy-back-end\obj\Debug\Food-buy-back-end.csproj.CoreCompileInputs.cache

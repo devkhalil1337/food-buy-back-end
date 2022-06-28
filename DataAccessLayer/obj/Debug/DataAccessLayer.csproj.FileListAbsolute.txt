@@ -1,0 +1,6 @@
+E:\food-buy-back-end\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\food-buy-back-end\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+E:\food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\food-buy-back-end\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
