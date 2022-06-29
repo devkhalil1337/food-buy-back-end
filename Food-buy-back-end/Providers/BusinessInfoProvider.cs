@@ -19,7 +19,7 @@ namespace Food_buy_back_end.Providers
             _ConnectionString = ConfigurationManager.ConnectionStrings["foodBuyConnectionString"].ConnectionString;
         }
 
-        public IList<BusinessInfo> GetAllBusinesUnits()
+        /*public IList<BusinessInfo> GetAllBusinesUnits()
         {
             List<BusinessInfo> businessUnits = new List<BusinessInfo>();
 
@@ -44,16 +44,10 @@ namespace Food_buy_back_end.Providers
             }
             catch (Exception ex)
             {
-                /* LogEntry logEntry = new LogEntry()
-                 {
-                     Severity = System.Diagnostics.TraceEventType.Error,
-                     Message = ex.Message + Environment.NewLine + ex.StackTrace
-                 };
-                 Logger.Write(logEntry);*/
             }
 
             return businessUnits;
-        }
+        }*/
 
 
 
@@ -73,6 +67,8 @@ namespace Food_buy_back_end.Providers
                 { "BusinessContact", businessInfo.BusinessContact },
                 { "BusinessEmail", businessInfo.BusinessEmail },
                 { "BusinessAddress", businessInfo.BusinessAddress },
+                { "BusinessLogo", businessInfo.BusinessLogo },
+                { "BusinessPostcode", businessInfo.BusinessPostcode },
                 { "BusinessCity", businessInfo.BusinessCity },
                 { "BusinessCountry", businessInfo.BusinessCountry },
                 { "BusinessDetails", businessInfo.BusinessDetails },
@@ -122,6 +118,8 @@ namespace Food_buy_back_end.Providers
                 { "BusinessContact", businessInfo.BusinessContact },
                 { "BusinessEmail", businessInfo.BusinessEmail },
                 { "BusinessAddress", businessInfo.BusinessAddress },
+                { "BusinessLogo", businessInfo.BusinessLogo },
+                { "BusinessPostcode", businessInfo.BusinessPostcode },
                 { "BusinessCity", businessInfo.BusinessCity },
                 { "BusinessCountry", businessInfo.BusinessCountry },
                 { "BusinessDetails", businessInfo.BusinessDetails },
